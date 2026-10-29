@@ -8,7 +8,7 @@ import { play } from '../sfx.js'
 import { IDLE, useLanded } from '../useLanded.js'
 
 const ext = { target: '_blank', rel: 'noopener noreferrer' }
-const lines = ['Hey! I\'m Brajendra.', 'Got an app idea or want to collaborate?']
+const lines = ['Hey! I\'m Samanta.', 'Interested in backend systems, APIs, or cloud deployments?']
 
 function Typing() {
   return (
@@ -56,10 +56,14 @@ export function Messages() {
 
         <div className="card messages">
           <header className="msg-head">
-            <span className="msg-avatar">
-              <DevEmoji size={38} />
+            <span className="msg-avatar" style={{ overflow: 'hidden' }}>
+              <img
+                src={`${import.meta.env.BASE_URL}brand/samanta-avatar.webp`}
+                alt="Samanta Mondal"
+                style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }}
+              />
             </span>
-            <b>Brajendra</b>
+            <b>Samanta Mondal</b>
             <small>iMessage</small>
           </header>
 
@@ -101,11 +105,10 @@ export function Messages() {
             )}
           </div>
 
-          <a href={links.instagram} className="msg-input"
-            data-sfx="send" {...ext}>
-            <span>iMessage</span>
+          <a href={links.email} className="msg-input" data-sfx="send">
+            <span>Email: samantas6085@gmail.com</span>
             <i>
-              <Icon name="solar:arrow-right-up-linear" size={16} />
+              <Icon name="solar:letter-bold-duotone" size={16} />
             </i>
           </a>
         </div>

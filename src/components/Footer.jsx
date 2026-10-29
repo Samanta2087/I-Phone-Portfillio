@@ -90,9 +90,9 @@ export function Footer() {
           </span>
           <div>
             <b>
-              Brajendra <span className="bkc-chip">BKC</span>
+              Samanta Mondal <span className="bkc-chip">SM</span>
             </b>
-            <p>Developer, YouTuber and tech creator from Madhya Pradesh, India.</p>
+            <p>Developer, Backend Engineer, and Technology Enthusiast from West Bengal, India.</p>
           </div>
         </div>
 
@@ -133,7 +133,7 @@ export function Footer() {
 
         <div className="foot-stats" role="group" aria-label="Site statistics">
           <span className="stat" title="Website views">
-            <Icon name="solar:eye-linear" size={18} />
+            <Icon name="solar:eye-bold-duotone" size={18} />
             <b>{stats.views.toLocaleString('en-US')}</b>
             <small>{stats.views === 1 ? 'view' : 'views'}</small>
           </span>
@@ -145,7 +145,7 @@ export function Footer() {
             aria-label={stats.liked ? 'Remove your like' : 'Like this website'}
           >
             <motion.span key={String(stats.liked)} initial={{ scale: 0.4 }} animate={{ scale: 1 }} transition={{ type: 'spring', stiffness: 500, damping: 12 }}>
-              <Icon name={stats.liked ? 'solar:heart-bold' : 'solar:heart-linear'} size={18} />
+              <Icon name={stats.liked ? 'solar:heart-bold' : 'solar:heart-bold-duotone'} size={18} />
             </motion.span>
             <b>{stats.likes.toLocaleString('en-US')}</b>
             <small>{stats.likes === 1 ? 'like' : 'likes'}</small>
@@ -154,26 +154,26 @@ export function Footer() {
 
         <div className="foot-actions" role="group" aria-label="Quick actions">
           <button className="foot-btn primary" onClick={goHome} data-sfx="whoosh">
-            <Icon name="solar:arrow-up-linear" size={18} /> Start from Home
+            <Icon name="solar:arrow-up-bold-duotone" size={18} /> Start from Home
           </button>
           <button className="foot-btn" onClick={replay} data-sfx="none">
-            <Icon name="solar:restart-linear" size={18} /> Replay
+            <Icon name="solar:restart-bold-duotone" size={18} /> Replay
           </button>
           <button className="foot-btn" onClick={startTour} data-tour data-sfx="none" aria-pressed={touring}>
-            <Icon name={touring ? 'solar:stop-circle-linear' : 'solar:play-circle-linear'} size={18} />
+            <Icon name={touring ? 'solar:stop-circle-bold-duotone' : 'solar:play-circle-bold-duotone'} size={18} />
             {touring ? 'Stop tour' : 'Play tour'}
           </button>
           <button className="foot-btn icon" onClick={sfxStore.toggle} data-sfx="none" aria-pressed={sound} aria-label={sound ? 'Turn sounds off' : 'Turn sounds on'}>
-            <Icon name={sound ? 'solar:volume-loud-linear' : 'solar:volume-cross-linear'} size={18} />
+            <Icon name={sound ? 'solar:volume-loud-bold-duotone' : 'solar:volume-cross-bold-duotone'} size={18} />
           </button>
           <button className="foot-btn icon" onClick={toggle} data-sfx="toggle" aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}>
-            <Icon name={theme === 'dark' ? 'solar:sun-2-linear' : 'solar:moon-linear'} size={18} />
+            <Icon name={theme === 'dark' ? 'solar:sun-2-bold-duotone' : 'solar:moon-bold-duotone'} size={18} />
           </button>
         </div>
 
         <p className="foot-copy">
           <i className="home-bar" aria-hidden="true" />
-          © 2026 Brajendra
+          © 2026 Samanta Mondal
         </p>
       </div>
 

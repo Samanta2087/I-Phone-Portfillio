@@ -224,9 +224,9 @@ export const sfxStore = {
   },
 }
 
-export const useSfxEnabled = () => useSyncExternalStore(sfxStore.subscribe, sfxStore.get)
+export const useSfxEnabled = () => useSyncExternalStore(sfxStore.subscribe, sfxStore.get, sfxStore.get)
 // false until the visitor has tapped / clicked / pressed a key and audio is actually running
-export const useSfxReady = () => useSyncExternalStore(sfxStore.subscribe, sfxStore.getReady)
+export const useSfxReady = () => useSyncExternalStore(sfxStore.subscribe, sfxStore.getReady, () => false)
 
 // Wires the whole page: any link or button plays a sound on click. Give an element
 // data-sfx="pop" (etc.) to choose its sound, or data-sfx="none" to stay silent.

@@ -1,10 +1,8 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import { ViteReactSSG } from 'vite-react-ssg/single-page'
 import './index.css'
 import App from './App.jsx'
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
+// ViteReactSSG pre-renders the entire single-page portfolio into static HTML at build time (SSG).
+// In the browser, it seamlessly hydrates the pre-rendered markup.
+export const createRoot = ViteReactSSG(<App />)
+

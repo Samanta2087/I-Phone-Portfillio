@@ -8,12 +8,12 @@ import { play } from '../sfx.js'
 import { scrollToTarget } from '../useSmoothScroll.js'
 
 const ext = { target: '_blank', rel: 'noopener noreferrer' }
-const total = projects.length + 1 // the last reel points to the YouTube channel
+const total = projects.length + 1 // the last reel points to GitHub repositories
 const floaters = [
   ['solar:code-linear', '8%', '18%', 0],
-  ['solar:cpu-bolt-linear', '84%', '26%', 1],
-  ['solar:smartphone-linear', '12%', '70%', 2],
-  ['solar:rocket-2-linear', '86%', '74%', 3],
+  ['solar:server-2-linear', '84%', '26%', 1],
+  ['solar:cloud-linear', '12%', '70%', 2],
+  ['solar:shield-check-linear', '86%', '74%', 3],
 ]
 const popIn = {
   hidden: { scale: 0.3, rotate: -30, opacity: 0 },
@@ -63,17 +63,24 @@ function RepoReel({ p, i, root, liked, onLike, onShare }) {
         viewport={view}
         transition={{ delay: 0.2, duration: 0.5 }}
       >
+        {p.category && (
+          <span style={{ fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--accent)', fontWeight: 700, display: 'block', marginBottom: 3 }}>
+            {p.category}
+          </span>
+        )}
         <h3>{p.name}</h3>
         <p>{p.description}</p>
         <ul className="reel-meta">
           <li>
             <i className="lang-dot" aria-hidden="true" /> {p.language}
           </li>
+          {p.badge && (
+            <li>
+              <Icon name="solar:widget-5-bold-duotone" size={14} /> {p.badge}
+            </li>
+          )}
           <li aria-label={`${p.stars} stars`}>
-            <Icon name="solar:star-linear" size={14} /> {p.stars}
-          </li>
-          <li aria-label={`${p.forks} forks`}>
-            <Icon name="solar:branching-paths-up-linear" size={14} /> {p.forks}
+            <Icon name="solar:star-bold" size={14} /> {p.stars}
           </li>
         </ul>
         <a className="reel-cta" href={p.url} data-sfx="select" {...ext}>
@@ -94,24 +101,24 @@ function RepoReel({ p, i, root, liked, onLike, onShare }) {
           <AnimatePresence>{liked && <Burst key="b" />}</AnimatePresence>
         </sm.button>
         <a href={p.url} aria-label={`Open ${p.name} on GitHub`} data-sfx="select" {...ext}>
-          <Icon name="solar:code-linear" size={28} />
+          <Icon name="solar:code-bold-duotone" size={28} />
         </a>
         <sm.button aria-label={`Share ${p.name}`} data-sfx="none" whileTap={{ scale: 0.85 }} onClick={onShare}>
-          <Icon name="solar:share-linear" size={26} />
+          <Icon name="solar:share-bold-duotone" size={26} />
         </sm.button>
       </div>
     </article>
   )
 }
 
-// The last reel: the rest of the projects live on the YouTube channel.
+// The last reel: the rest of the projects live on GitHub.
 function MoreReel({ root }) {
   const view = { root, amount: 0.6 }
   return (
     <article
       className="reel reel-more"
       aria-roledescription="slide"
-      aria-label={`${total} of ${total}: more projects on YouTube`}
+      aria-label={`${total} of ${total}: more projects on GitHub`}
       style={{ '--r': '200deg' }}
     >
       <div className="reel-bg" aria-hidden="true">
@@ -120,9 +127,9 @@ function MoreReel({ root }) {
       </div>
 
       <sm.div className="reel-center" initial="hidden" whileInView="show" viewport={view} aria-hidden="true">
-        <sm.span className="reel-tile yt" variants={popIn}>
+        <sm.span className="reel-tile" variants={popIn} style={{ background: '#24292f' }}>
           <span className="reel-halo" />
-          <Icon name="simple-icons:youtube" size={58} />
+          <Icon name="simple-icons:github" size={58} />
         </sm.span>
       </sm.div>
 
@@ -134,15 +141,15 @@ function MoreReel({ root }) {
         transition={{ delay: 0.2, duration: 0.5 }}
       >
         <h3 className="reel-big">
-          <CountUp to={moreProjects.count} suffix="+" /> projects
+          <CountUp to={moreProjects.count} suffix="+" /> repos
         </h3>
         <p>{moreProjects.line}</p>
-        <a className="reel-cta yt" href={links.youtube} data-sfx="pop" {...ext}>
-          <Icon name="simple-icons:youtube" size={16} /> Watch on YouTube
+        <a className="reel-cta" href={links.repos} data-sfx="pop" {...ext}>
+          <Icon name="simple-icons:github" size={16} /> Browse Repositories
         </a>
-        <a className="reel-link" href={links.repos} data-sfx="select" {...ext}>
-          or browse all repositories
-          <Icon name="solar:arrow-right-up-linear" size={14} />
+        <a className="reel-link" href={links.github} data-sfx="select" {...ext}>
+          or visit GitHub profile
+          <Icon name="solar:arrow-right-up-bold-duotone" size={14} />
         </a>
         {/* on a phone the page edges beside the reel are tiny: this carries on down the page */}
         <button
@@ -340,7 +347,7 @@ export function PhoneReels() {
             key={i}
             role="tab"
             aria-selected={active === i}
-            aria-label={i < projects.length ? projects[i].name : 'More on YouTube'}
+            aria-label={i < projects.length ? projects[i].name : 'More on GitHub'}
             data-sfx="none"
             className={active === i ? 'on' : ''}
             onClick={() => jump(i)}

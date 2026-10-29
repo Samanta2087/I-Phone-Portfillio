@@ -7,7 +7,7 @@ import { IDLE, useLanded } from '../useLanded.js'
 import { play, useSfxEnabled, useSfxReady } from '../sfx.js'
 
 const ext = { target: '_blank', rel: 'noopener noreferrer' }
-const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches
+const reducedMotion = () => (typeof window !== 'undefined' && typeof window.matchMedia === 'function' ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false)
 
 // iOS-style spring: smooth, no wobble
 const smooth = { type: 'spring', stiffness: 110, damping: 20, mass: 0.9 }
@@ -157,7 +157,7 @@ export function LockScreen() {
 
   return (
     <section id="home" className="lock" ref={ref}>
-      <h1 className="sr-only">Brajendra: developer, YouTuber and tech creator</h1>
+      <h1 className="sr-only">Samanta Mondal: Developer, Backend Engineer, and Technology Enthusiast</h1>
       <motion.div className="lock-scroll" style={{ y, opacity, scale }}>
         <motion.div
           key={run}
@@ -193,11 +193,15 @@ export function LockScreen() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ ...smooth, delay: 0.55 }}
           >
-            <span className="app-icon wave">
-              <DevEmoji size={32} />
+            <span className="app-icon wave" style={{ overflow: 'hidden' }}>
+              <img
+                src={`${import.meta.env.BASE_URL}brand/samanta-avatar.webp`}
+                alt="Samanta Mondal"
+                style={{ width: '100%', height: '100%', borderRadius: 'inherit', objectFit: 'cover' }}
+              />
             </span>
             <span className="notif-text">
-              <b>Hi, I'm Brajendra</b>
+              <b>Hi, I'm Samanta</b>
               <span>
                 I'm a <em>{typed}</em>
                 <i className="caret" aria-hidden="true" />
@@ -207,9 +211,9 @@ export function LockScreen() {
           </motion.div>
 
           <div className="rings">
-            <Ring value={0.86} big="7.3M" label="views" delay={0.8} />
-            <Ring value={0.64} big="90K+" label="subs" delay={0.92} />
-            <Ring value={0.5} big="50+" label="projects" delay={1.04} />
+            <Ring value={0.99} big="99.9%" label="uptime" delay={0.8} />
+            <Ring value={0.82} big="40+" label="repos" delay={0.92} />
+            <Ring value={0.7} big="4" label="projects" delay={1.04} />
           </div>
 
           {soundOn && !soundReady && (
@@ -220,7 +224,7 @@ export function LockScreen() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.6 }}
             >
-              <Icon name="solar:volume-loud-linear" size={16} /> Tap for sound
+              <Icon name="solar:volume-loud-bold-duotone" size={16} /> Tap for sound
             </motion.button>
           )}
         </div>

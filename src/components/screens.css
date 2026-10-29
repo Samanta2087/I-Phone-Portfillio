@@ -562,6 +562,39 @@
   color: var(--s-fg);
   box-shadow: inset 0 -1.5px 0 var(--s-fg);
 }
+.ig-avatar-wrap {
+  position: relative;
+}
+.ig-note {
+  position: absolute;
+  top: -12px;
+  left: -2px;
+  background: #ffffff;
+  color: #262626;
+  font-size: 0.56rem;
+  font-weight: 500;
+  padding: 2px 7px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.22);
+  white-space: nowrap;
+  z-index: 3;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+[data-theme='dark'] .ig-note {
+  background: #262626;
+  color: #f5f5f5;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+.ig-note::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 14px;
+  width: 5px;
+  height: 5px;
+  background: inherit;
+  border-radius: 50%;
+}
 .ig-grid {
   display: grid;
   flex: 1;
@@ -570,12 +603,44 @@
   gap: 1.5px;
   overflow: hidden;
 }
-.ig-grid i {
-  display: grid;
-  place-items: center;
+.ig-grid .ig-post-tile {
+  position: relative;
+  display: block;
   aspect-ratio: 1;
-  background: var(--c);
+  overflow: hidden;
+  background: var(--s-chip);
+}
+.ig-grid .ig-post-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+.ig-grid .ig-post-tile:hover img {
+  transform: scale(1.06);
+}
+.ig-grid .ig-pin {
+  position: absolute;
+  top: 4px;
+  right: 4px;
   color: #fff;
+  font-size: 0.65rem;
+  line-height: 1;
+  filter: drop-shadow(0 1.5px 3px rgba(0, 0, 0, 0.9));
+  transform: rotate(45deg);
+}
+.ig-grid .ig-views {
+  position: absolute;
+  bottom: 4px;
+  left: 4px;
+  font-size: 0.58rem;
+  font-weight: 600;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  filter: drop-shadow(0 1.5px 3px rgba(0, 0, 0, 0.9));
 }
 .ig-nav {
   margin-top: 0;
@@ -586,8 +651,14 @@
   width: 26px;
   height: 26px;
   border-radius: 50%;
+  overflow: hidden;
   background: var(--s-chip);
   outline: 1.5px solid var(--s-fg);
+}
+.ig-me img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* ============================== Telegram ============================== */
@@ -827,3 +898,78 @@
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
 }
+
+/* ========================= Server Monitor Screen ========================= */
+.srv-head {
+  padding: 10px 16px 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.srv-status-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 8px;
+  border-radius: 99px;
+  background: rgba(48, 209, 88, 0.15);
+  color: #30d158;
+  font-weight: 700;
+  font-size: 0.68rem;
+}
+.srv-status-tag i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #30d158;
+  box-shadow: 0 0 8px #30d158;
+}
+.srv-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  padding: 4px 14px;
+}
+.srv-stat-box {
+  padding: 8px 10px;
+  border-radius: 12px;
+  background: var(--s-chip);
+  border: 1px solid var(--s-line);
+}
+.srv-stat-box b {
+  display: block;
+  font-size: 0.94rem;
+}
+.srv-stat-box small {
+  font-size: 0.66rem;
+  color: var(--s-sub);
+}
+.srv-container-list {
+  padding: 6px 14px;
+  display: grid;
+  gap: 5px;
+}
+.srv-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 10px;
+  border-radius: 10px;
+  background: var(--s-chip);
+  border: 1px solid var(--s-line);
+  font-size: 0.72rem;
+}
+.srv-row-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.srv-pill {
+  font-size: 0.62rem;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: rgba(48, 209, 88, 0.18);
+  color: #30d158;
+}
+

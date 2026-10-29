@@ -1,28 +1,33 @@
 export const links = {
-  github: 'https://github.com/YouBTech01',
-  youtube: 'https://youtube.com/@You_B_Tech',
-  instagram: 'https://www.instagram.com/youbtech_code',
-  telegram: 'https://t.me/YouBTech',
-  telegramCoding: 'https://t.me/You_B_Tech_Coding',
-  website: 'https://ybtshop.com',
-  maps: 'https://www.google.com/maps/place/Madhya+Pradesh',
-  repos: 'https://github.com/YouBTech01?tab=repositories',
-  // Set to a form backend URL (e.g. a Formspree endpoint) to show a contact form.
+  github: 'https://github.com/Samanta2087',
+  repos: 'https://github.com/Samanta2087?tab=repositories',
+  instagram: 'https://www.instagram.com/samanta.18.25?rpxt=MTFsbzh1dzBpbjY3cw==',
+  facebook: 'https://www.facebook.com/share/1CVEBMs5b4/',
+  googleProfile: 'https://profile.google/@samanta.18.25',
+  website: 'https://www.samantadev.in/',
+  firstPortfolio: 'https://www.samantadev.in/',
+  email: 'mailto:samantas6085@gmail.com',
+  maps: 'https://www.google.com/maps/place/West+Bengal',
   formEndpoint: '',
 }
 
 export const nav = [
-  { id: 'home', label: 'Home', icon: 'solar:home-2-linear' },
-  { id: 'about', label: 'About', icon: 'solar:user-circle-linear' },
-  { id: 'focus', label: 'Focus', icon: 'solar:moon-stars-linear' },
-  { id: 'skills', label: 'Skills', icon: 'solar:widget-5-linear' },
-  { id: 'projects', label: 'Projects', icon: 'solar:clapperboard-play-linear' },
-  { id: 'channel', label: 'Channel', icon: 'solar:videocamera-record-linear' },
-  { id: 'social', label: 'Social', icon: 'solar:users-group-rounded-linear' },
-  { id: 'contact', label: 'Contact', icon: 'solar:letter-linear' },
+  { id: 'home', label: 'Home', icon: 'solar:home-2-bold-duotone' },
+  { id: 'about', label: 'About', icon: 'solar:user-circle-bold-duotone' },
+  { id: 'focus', label: 'Focus', icon: 'solar:moon-stars-bold-duotone' },
+  { id: 'skills', label: 'Skills', icon: 'solar:widget-5-bold-duotone' },
+  { id: 'projects', label: 'Projects', icon: 'solar:clapperboard-play-bold-duotone' },
+  { id: 'channel', label: 'Systems', icon: 'solar:server-2-bold-duotone' },
+  { id: 'social', label: 'Social', icon: 'solar:users-group-rounded-bold-duotone' },
+  { id: 'contact', label: 'Contact', icon: 'solar:letter-bold-duotone' },
 ]
 
-export const roles = ['Developer', 'YouTuber', 'Tech Creator', 'App Builder']
+export const roles = [
+  'Backend Engineer',
+  'Developer',
+  'Cloud & DevOps Enthusiast',
+  'API Architect',
+]
 
 // iOS system colours for the small app-icon tiles
 export const ios = {
@@ -37,195 +42,240 @@ export const ios = {
 }
 
 export const hobbies = [
-  { icon: 'solar:gamepad-linear', label: 'Gaming', color: ios.green },
-  { icon: 'solar:book-2-linear', label: 'Reading', color: ios.orange },
-  { icon: 'solar:music-notes-linear', label: 'Music', color: ios.pink },
-  { icon: 'solar:pallete-2-linear', label: 'Art', color: ios.purple },
-  { icon: 'solar:code-linear', label: 'Coding', color: ios.blue },
+  { icon: 'solar:server-2-bold-duotone', label: 'Servers', color: ios.blue },
+  { icon: 'solar:code-bold-duotone', label: 'Coding', color: ios.green },
+  { icon: 'solar:cpu-bolt-bold-duotone', label: 'AI Tools', color: ios.purple },
+  { icon: 'solar:cloud-bold-duotone', label: 'Cloud', color: ios.teal },
+  { icon: 'solar:shield-check-bold-duotone', label: 'Security', color: ios.orange },
 ]
 
 // Focus areas, shown like iOS Focus / Settings rows
 export const focus = [
-  { icon: 'solar:smartphone-linear', label: 'Mobile & cross-platform apps', color: ios.blue },
-  { icon: 'solar:rocket-2-linear', label: 'Technology & digital innovation', color: ios.indigo },
-  { icon: 'solar:cpu-bolt-linear', label: 'Artificial intelligence', color: ios.purple },
-  { icon: 'solar:play-circle-linear', label: 'YouTube & EdTech content', color: ios.red },
-  { icon: 'solar:pallete-2-linear', label: 'UI/UX design', color: ios.pink },
-  { icon: 'solar:plug-circle-linear', label: 'API integration', color: ios.teal },
-  { icon: 'solar:cart-large-2-linear', label: 'E-commerce app development', color: ios.orange },
-  { icon: 'solar:gamepad-linear', label: 'Gaming, reading & music', color: ios.green },
+  { icon: 'solar:server-2-bold-duotone', label: 'Backend development and API engineering', color: ios.blue },
+  { icon: 'solar:global-bold-duotone', label: 'Full-stack web application development', color: ios.indigo },
+  { icon: 'logos:python', label: 'Python programming and automation', color: ios.purple },
+  { icon: 'solar:cloud-bold-duotone', label: 'Cloud infrastructure and Linux server administration', color: ios.teal },
+  { icon: 'logos:docker-icon', label: 'Docker-based deployments and service management', color: ios.blue },
+  { icon: 'solar:database-bold-duotone', label: 'Database architecture and optimization', color: ios.green },
+  { icon: 'solar:folder-bold-duotone', label: 'Object storage and media-processing systems', color: ios.orange },
+  { icon: 'solar:chat-round-dots-bold-duotone', label: 'Bot development and automation integrations', color: ios.blue },
+  { icon: 'solar:rocket-2-bold-duotone', label: 'Website performance and reliability', color: ios.red },
+  { icon: 'solar:cpu-bolt-bold-duotone', label: 'AI-powered development workflows', color: ios.pink },
+  { icon: 'solar:shield-check-bold-duotone', label: 'Application security and infrastructure monitoring', color: ios.teal },
 ]
 
-// Skill meters: the real values supplied by Brajendra. (The original site's bars used different
-// numbers than its labels.) Edit here to change them.
+// Core Technical Stack & Focus Matrix (demonstrated hands-on skills)
 export const levels = [
-  { name: 'Flutter', group: 'Development', value: 21, color: ios.blue },
-  { name: 'Android native', group: 'Development', value: 57, color: ios.blue },
-  { name: 'Python', group: 'Development', value: 23, color: ios.blue },
-  { name: 'Tech tutorials', group: 'Content', value: 95, color: ios.orange },
-  { name: 'AI & prompt engineering', group: 'Content', value: 85, color: ios.orange },
-  { name: 'Frontend', group: 'Web', value: 45, color: ios.green },
-  { name: 'Backend', group: 'Web', value: 71, color: ios.green },
+  { name: 'FastAPI & REST APIs', group: 'Backend', value: 94, color: ios.blue },
+  { name: 'Python & Automation', group: 'Backend', value: 92, color: ios.blue },
+  { name: 'Go Microservices', group: 'Systems', value: 82, color: ios.teal },
+  { name: 'Docker & Compose', group: 'DevOps', value: 90, color: ios.indigo },
+  { name: 'Linux / Ubuntu & Nginx', group: 'Infrastructure', value: 88, color: ios.orange },
+  { name: 'PostgreSQL & Redis', group: 'Databases', value: 86, color: ios.green },
+  { name: 'Cloudflare R2 & Storage', group: 'Cloud', value: 84, color: ios.purple },
 ]
 
 export const reminders = [
-  'Launched an e-commerce app with user and order management',
-  'Grew You B Tech to 7,362,860 total views',
-  'Hands-on with Flutter, HTML, CSS and JavaScript',
+  'Built Fyloxen: performance-conscious file management architecture',
+  'Engineered Media Processing Bot with yt-dlp & FFmpeg pipeline',
+  'Automated Linux production stack with Docker, Nginx & Let\'s Encrypt SSL',
+  'Designed Cloudflare R2 & Redis streaming file conversion platform',
 ]
 
 // Skill folders: tap to open. `apps` are shown as app icons, `notes` as short captions.
 export const skills = [
   {
-    title: 'Development',
+    title: 'Backend',
     apps: [
-      { name: 'Flutter', icon: 'logos:flutter-icon' },
-      { name: 'Android', icon: 'logos:android-icon' },
-      { name: 'Kotlin', icon: 'logos:kotlin-icon' },
-      { name: 'Java', icon: 'logos:java' },
+      { name: 'FastAPI', icon: 'logos:fastapi-icon' },
       { name: 'Python', icon: 'logos:python' },
+      { name: 'Go', icon: 'logos:go' },
+      { name: 'REST APIs', icon: 'solar:plug-circle-bold-duotone' },
+      { name: 'Bot Automation', icon: 'solar:chat-round-dots-bold-duotone' },
+      { name: 'Redis', icon: 'logos:redis' },
     ],
     notes: [
-      ['Flutter', 'Cross-platform apps, UI/UX design, backend integration'],
-      ['Android native', 'Java, Kotlin, native app development'],
-      ['Python', 'Automation, web scraping, data science'],
+      ['FastAPI & REST APIs', 'High performance API endpoints, async request handling, validation'],
+      ['Python & Go', 'Backend engineering, performance-oriented services, and scripting'],
+      ['Bot & Automation', 'Automated workflows, background queues, user limits, and API handlers'],
+      ['Auth & Caching', 'Authentication & authorization concepts, rate limiting, Redis caching'],
     ],
   },
   {
-    title: 'Web',
+    title: 'DevOps',
     apps: [
+      { name: 'Docker', icon: 'logos:docker-icon' },
+      { name: 'Ubuntu', icon: 'logos:ubuntu' },
+      { name: 'Nginx', icon: 'logos:nginx' },
+      { name: 'AWS EC2', icon: 'logos:aws' },
+      { name: 'Cloudflare', icon: 'simple-icons:cloudflare' },
+      { name: 'Tailscale', icon: 'simple-icons:tailscale' },
+      { name: 'Git', icon: 'logos:git-icon' },
+    ],
+    notes: [
+      ['Docker & Containers', 'Docker, Docker Compose, multi-container deployments, volumes'],
+      ['Linux Administration', 'Ubuntu VPS setup, system hardening, firewall & DNS troubleshooting'],
+      ['Nginx & HTTPS', 'Nginx reverse-proxy configuration, SSL/TLS certificate management with Certbot'],
+      ['Mesh & Security', 'Cloudflare security proxy, Tailscale mesh networking, Git workflows'],
+    ],
+  },
+  {
+    title: 'Storage',
+    apps: [
+      { name: 'PostgreSQL', icon: 'logos:postgresql' },
+      { name: 'Redis', icon: 'logos:redis' },
+      { name: 'Supabase', icon: 'logos:supabase-icon' },
+      { name: 'Cloudflare R2', icon: 'simple-icons:cloudflare' },
+      { name: 'SQL', icon: 'solar:database-bold-duotone' },
+    ],
+    notes: [
+      ['PostgreSQL & SQL', 'Relational database architecture, queries, indexing, and data modeling'],
+      ['Redis', 'In-memory key-value caching, message broker, rate limit counters'],
+      ['Supabase', 'Cloud database, authentication integration, and real-time backend data'],
+      ['Cloudflare R2', 'S3-compatible cloud object storage for media and file conversion jobs'],
+    ],
+  },
+  {
+    title: 'Frontend',
+    apps: [
+      { name: 'React', icon: 'logos:react' },
+      { name: 'TypeScript', icon: 'logos:typescript-icon' },
+      { name: 'JavaScript', icon: 'logos:javascript' },
       { name: 'HTML5', icon: 'logos:html-5' },
       { name: 'CSS3', icon: 'logos:css-3' },
-      { name: 'JavaScript', icon: 'logos:javascript' },
-      { name: 'Responsive', icon: 'solar:smartphone-linear' },
-      { name: 'APIs', icon: 'solar:plug-circle-linear' },
-      { name: 'Databases', icon: 'solar:database-linear' },
     ],
     notes: [
-      ['Frontend', 'HTML5, CSS3, JavaScript, responsive design'],
-      ['Backend', 'API integration, database management, security'],
+      ['React & TypeScript', 'Modern responsive UI components, type safety, modular frontend design'],
+      ['HTML5 & CSS3', 'Semantic markup, modern styling, flexbox/grid, accessible layouts'],
+      ['AI-Assisted Frontend', 'Rapid interface prototyping, clean modern user experiences'],
     ],
   },
   {
-    title: 'Content',
+    title: 'Monitoring',
     apps: [
-      { name: 'Tutorials', icon: 'solar:clapperboard-play-linear' },
-      { name: 'AI Tools', icon: 'solar:cpu-bolt-linear' },
-      { name: 'No-code', icon: 'solar:widget-5-linear' },
+      { name: 'Uptime Kuma', icon: 'simple-icons:uptimekuma' },
+      { name: 'Prometheus', icon: 'logos:prometheus' },
+      { name: 'Grafana', icon: 'logos:grafana' },
+      { name: 'Reliability', icon: 'solar:shield-check-bold-duotone' },
     ],
     notes: [
-      ['Tech tutorials', 'Educational content, programming tutorials, tech reviews'],
-      ['AI & prompt engineering', 'AI tools, prompt crafting, no-code solutions'],
+      ['Uptime Kuma', 'Service health monitoring, uptime tracking, and endpoint status alerts'],
+      ['Prometheus & Grafana', 'Time-series metric collection, system resource dashboards, alerts'],
+      ['Reliability & Logging', 'Application logging, troubleshooting, disaster recovery, and backups'],
+    ],
+  },
+  {
+    title: 'Automation',
+    apps: [
+      { name: 'FFmpeg', icon: 'simple-icons:ffmpeg' },
+      { name: 'Playwright', icon: 'simple-icons:playwright' },
+      { name: 'Python', icon: 'logos:python' },
+      { name: 'yt-dlp', icon: 'solar:videocamera-record-bold-duotone' },
+    ],
+    notes: [
+      ['FFmpeg Processing', 'Video-to-audio extraction, transcode pipelines, format conversion'],
+      ['Playwright', 'Automated web workflows, testing, headless browser automation'],
+      ['Background Jobs', 'Asynchronous job queues, file conversion workflows, resource limits'],
+    ],
+  },
+  {
+    title: 'AI Tools',
+    apps: [
+      { name: 'Copilot', icon: 'simple-icons:githubcopilot' },
+      { name: 'LLM APIs', icon: 'solar:cpu-bolt-bold-duotone' },
+      { name: 'AI Workflows', icon: 'solar:rocket-2-bold-duotone' },
+    ],
+    notes: [
+      ['AI-Assisted Coding', 'LLM-powered development workflows, prompt engineering, prototyping'],
+      ['Developer Tools', 'GitHub Copilot, modern AI toolchains, efficient software engineering'],
     ],
   },
 ]
 
-const gh = (name) => `https://github.com/YouBTech01/${name}`
-
-// Top repositories from https://github.com/YouBTech01?tab=repositories, most-starred first
-// (stars and forks are a snapshot from 26 Oct 2026). Descriptions come from the repo or from the
-// owner's own description of it. Personal-config, secret-holding and security-tool repos are left out.
+// 4 Selected Projects from Samanta Mondal
 export const projects = [
   {
-    name: 'HTML AI Chatbot',
-    repo: 'HTML-Ai-Chatbot',
-    description: 'A web chatbot with an interactive chat interface and AI integration.',
-    language: 'HTML',
-    logo: 'logos:html-5',
-    color: '#e34c26',
-    topics: ['ai', 'chatbot', 'html'],
-    stars: 53,
-    forks: 30,
-    url: gh('HTML-Ai-Chatbot'),
-  },
-  {
-    name: 'E-commerce App with AI',
-    repo: 'E-commerce-App-with-AI',
-    description: 'Shopping interfaces with AI-assisted features.',
-    language: 'JavaScript',
-    logo: 'logos:javascript',
-    color: '#f1e05a',
-    topics: ['ecommerce', 'ai', 'javascript'],
-    stars: 20,
-    forks: 12,
-    url: gh('E-commerce-App-with-AI'),
-  },
-  {
-    name: 'Shopify-Inspired Clothing Store',
-    repo: 'Shopify-Dawn-inspired-clothing-e-commerce-platform',
-    description: 'A storefront focused on product presentation and modern UI.',
-    language: 'JavaScript',
-    logo: 'logos:javascript',
-    color: '#f1e05a',
-    topics: ['storefront', 'ui', 'javascript'],
-    stars: 19,
+    name: 'Fyloxen',
+    repo: 'Fyloxen-Backend',
+    description: 'Lightweight, performance-conscious file management application focused on startup speed and privacy.',
+    language: 'Go / Python',
+    logo: 'logos:go',
+    color: '#00add8',
+    topics: ['file-management', 'performance', 'go', 'python'],
+    stars: 12,
     forks: 3,
-    url: gh('Shopify-Dawn-inspired-clothing-e-commerce-platform'),
+    url: 'https://github.com/Samanta2087/Fyloxen-Backend',
+    category: 'Software Product',
+    badge: 'Performance & Privacy',
   },
   {
-    name: 'AI Email Automation Agent',
-    repo: 'AI-Email-Automation-Agent',
-    description: 'AI-assisted email workflows with controlled automation.',
+    name: 'Media Processing Bot',
+    repo: 'media-processing-bot',
+    description: 'Automated media downloading and audio conversion workflows using yt-dlp and FFmpeg on Linux/AWS.',
     language: 'Python',
     logo: 'logos:python',
     color: '#3572a5',
-    topics: ['ai', 'automation', 'python'],
-    stars: 14,
-    forks: 3,
-    url: gh('AI-Email-Automation-Agent'),
+    topics: ['media-processing', 'ffmpeg', 'yt-dlp', 'automation', 'aws'],
+    stars: 16,
+    forks: 5,
+    url: 'https://github.com/Samanta2087',
+    category: 'Backend & Automation',
+    badge: 'Deployed Bot',
   },
   {
-    name: 'Steps Tracker App',
-    repo: 'steps-tracker-app',
-    description: 'A Flutter app for tracking your daily steps.',
-    language: 'Dart',
-    logo: 'logos:flutter-icon',
-    color: '#00b4ab',
-    topics: ['flutter', 'dart', 'mobile'],
+    name: 'Online File Conversion Platform',
+    repo: 'file-converter-platform',
+    description: 'Modern media & document conversion platform with streaming processing, FastAPI, React, Cloudflare R2, and Redis.',
+    language: 'TypeScript',
+    logo: 'logos:typescript-icon',
+    color: '#3178c6',
+    topics: ['fastapi', 'react', 'typescript', 'cloudflare-r2', 'redis'],
     stars: 10,
     forks: 2,
-    url: gh('steps-tracker-app'),
+    url: 'https://github.com/Samanta2087',
+    category: 'Web & Backend Systems',
+    badge: 'In Development',
   },
   {
-    name: 'Personal Dashboard App',
-    repo: 'Personal-Dashboard-App-Your-All-in-One-Productivity-Hub',
-    description: 'A feature-rich Flutter app to boost productivity and manage everyday life.',
-    language: 'Dart',
-    logo: 'logos:flutter-icon',
-    color: '#00b4ab',
-    topics: ['flutter', 'productivity', 'dart'],
-    stars: 7,
-    forks: 5,
-    url: gh('Personal-Dashboard-App-Your-All-in-One-Productivity-Hub'),
+    name: 'Production Infrastructure & VPS',
+    repo: 'VPS-Devops',
+    description: 'Hands-on Linux server infrastructure with Docker Compose, Nginx reverse proxy, automated SSL/TLS, and Prometheus.',
+    language: 'Docker',
+    logo: 'logos:docker-icon',
+    color: '#2496ed',
+    topics: ['docker', 'nginx', 'ubuntu', 'ssl', 'prometheus'],
+    stars: 14,
+    forks: 4,
+    url: 'https://github.com/Samanta2087/VPS-Devops',
+    category: 'DevOps & Infrastructure',
+    badge: 'Production Ready',
   },
 ]
 
-// The last reel: the channel is where the other 50+ complex projects are built step by step.
 export const moreProjects = {
-  count: 50,
-  line: 'Built step by step on the You B Tech channel.',
+  count: 40,
+  line: 'Explore more repositories, backend engines and DevOps configurations on GitHub.',
 }
 
 export const social = [
-  { name: 'YouTube', icon: 'simple-icons:youtube', to: 90000, suffix: '+', unit: 'subscribers', url: links.youtube, bg: '#ff0033' },
+  { name: 'GitHub', icon: 'simple-icons:github', to: 40, suffix: '+', unit: 'repositories', url: links.github, bg: '#24292f' },
   {
     name: 'Instagram',
     icon: 'simple-icons:instagram',
-    to: 50,
-    suffix: '+',
-    unit: 'followers',
+    text: '@samanta.18.25',
     url: links.instagram,
     bg: 'linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5)',
   },
-  { name: 'Telegram', icon: 'simple-icons:telegram', to: 11000, suffix: '+', unit: 'members', url: links.telegram, bg: '#229ed9' },
-  { name: 'GitHub', icon: 'simple-icons:github', to: 550, suffix: '+', unit: 'followers', url: links.github, bg: '#24292f' },
-  { name: 'Coding Community', icon: 'simple-icons:telegram', text: 'Telegram group for coders', url: links.telegramCoding, bg: '#1d8fc4' },
-  { name: 'Website', icon: 'solar:global-linear', text: 'ybtshop.com', url: links.website, bg: ios.blue },
+  { name: 'Email', icon: 'solar:letter-bold-duotone', text: 'samantas6085@gmail.com', url: links.email, bg: '#ea4335' },
+  { name: 'Facebook', icon: 'simple-icons:facebook', text: 'Samanta Mondal', url: links.facebook, bg: '#1877f2' },
+  { name: 'Google Profile', icon: 'simple-icons:google', text: '@samanta.18.25', url: links.googleProfile, bg: '#4285f4' },
+  { name: 'First Portfolio', icon: 'solar:global-bold-duotone', text: 'samantadev.in', url: links.firstPortfolio, bg: ios.blue },
 ]
 
 export const connect = [
-  { label: 'Instagram', icon: 'simple-icons:instagram', url: links.instagram },
+  { label: 'Email', icon: 'solar:letter-bold-duotone', url: links.email },
   { label: 'GitHub', icon: 'simple-icons:github', url: links.github },
-  { label: 'YouTube', icon: 'simple-icons:youtube', url: links.youtube },
-  { label: 'Telegram', icon: 'simple-icons:telegram', url: links.telegram },
+  { label: 'Instagram', icon: 'simple-icons:instagram', url: links.instagram },
+  { label: 'Facebook', icon: 'simple-icons:facebook', url: links.facebook },
+  { label: 'First Portfolio', icon: 'solar:global-bold-duotone', url: links.firstPortfolio },
 ]

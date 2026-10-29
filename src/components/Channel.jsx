@@ -3,14 +3,14 @@ import { animate, useMotionValue } from 'motion/react'
 import { sm } from '../sm.jsx'
 import { Icon } from './Icon.jsx'
 import { LargeTitle } from './Type.jsx'
-import { GitHubScreen, InstagramScreen, TelegramScreen, YouTubeScreen } from './SocialScreens.jsx'
+import { DevOpsScreen, FyloxenScreen, GitHubScreen, InstagramScreen } from './SocialScreens.jsx'
 import { play } from '../sfx.js'
 
 const screens = [
-  { id: 'youtube', label: 'YouTube', Screen: YouTubeScreen },
-  { id: 'instagram', label: 'Instagram', Screen: InstagramScreen },
-  { id: 'telegram', label: 'Telegram', Screen: TelegramScreen },
   { id: 'github', label: 'GitHub', Screen: GitHubScreen },
+  { id: 'instagram', label: 'Instagram', Screen: InstagramScreen },
+  { id: 'devops', label: 'Infrastructure', Screen: DevOpsScreen },
+  { id: 'fyloxen', label: 'Fyloxen Suite', Screen: FyloxenScreen },
 ]
 const N = screens.length
 const wrap = (i) => ((i % N) + N) % N
@@ -75,7 +75,7 @@ export function Channel() {
   return (
     <section id="channel" className="section">
       <div className="container narrow wide-ish">
-        <LargeTitle>Channel</LargeTitle>
+        <LargeTitle>Systems</LargeTitle>
       </div>
 
       <sm.div
@@ -91,7 +91,7 @@ export function Channel() {
           ref={stage}
           role="group"
           aria-roledescription="carousel"
-          aria-label="My social channels. Swipe left or right."
+          aria-label="My systems and platforms. Swipe left or right."
           tabIndex={0}
           onPan={onPan}
           onPanEnd={onPanEnd}
@@ -126,10 +126,10 @@ export function Channel() {
         </sm.div>
 
         <button className="deck-arrow prev" aria-label="Previous channel" data-sfx="none" onClick={() => go(active - 1)}>
-          <Icon name="solar:alt-arrow-right-linear" size={22} />
+          <Icon name="solar:alt-arrow-right-bold-duotone" size={22} />
         </button>
         <button className="deck-arrow next" aria-label="Next channel" data-sfx="none" onClick={() => go(active + 1)}>
-          <Icon name="solar:alt-arrow-right-linear" size={22} />
+          <Icon name="solar:alt-arrow-right-bold-duotone" size={22} />
         </button>
 
         <div className="deck-dots" role="tablist" aria-label="Channels">

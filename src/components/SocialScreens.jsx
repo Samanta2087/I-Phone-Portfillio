@@ -8,9 +8,17 @@ import './screens.css'
 
 const ext = { target: '_blank', rel: 'noopener noreferrer' }
 
-// The You B Tech brand logo, used as the circular profile picture on every platform
 function Logo() {
-  return <img className="logo-img" src={`${import.meta.env.BASE_URL}brand/logo.webp`} width="96" height="96" alt="You B Tech logo" decoding="async" />
+  return (
+    <img
+      className="logo-img"
+      src={`${import.meta.env.BASE_URL}brand/logo.webp`}
+      width="96"
+      height="96"
+      alt="Samanta Mondal logo"
+      decoding="async"
+    />
+  )
 }
 
 function StatusBar() {
@@ -33,104 +41,92 @@ const rise = (i) => ({
   transition: { type: 'spring', stiffness: 120, damping: 20, delay: 0.1 + i * 0.07 },
 })
 
-/* ---------------------------------- YouTube ---------------------------------- */
-const ytChips = ['AI App Development', 'Android', 'Flutter', 'Websites', 'AI Coding Tools', 'Walkthroughs']
-
-export function YouTubeScreen() {
-  const [tab, setTab] = useState(0)
-  const [chip, setChip] = useState(0)
+/* ---------------------------------- GitHub ---------------------------------- */
+export function GitHubScreen() {
   return (
-    <article className="screen yt" aria-label="YouTube channel: You B Tech">
+    <article className="screen gh" aria-label="GitHub profile: Samanta2087">
       <StatusBar />
-      <header className="app-bar">
-        <Icon name="solar:arrow-left-linear" size={22} />
-        <span />
-        <Icon name="solar:magnifer-linear" size={22} />
-        <Icon name="solar:menu-dots-bold" size={22} />
+      <header className="app-bar gh-top">
+        <Icon name="solar:hamburger-menu-linear" size={22} />
+        <Icon name="simple-icons:github" size={26} />
+        <Icon name="solar:bell-bold-duotone" size={22} />
       </header>
 
-      <div className="yt-banner" aria-hidden="true">
-        <i />
-        <i />
-      </div>
-
-      <div className="yt-id">
-        <span className="yt-avatar">
-          <Logo />
+      <div className="gh-id">
+        <span className="gh-avatar" style={{ overflow: 'hidden' }}>
+          <img
+            src={`${import.meta.env.BASE_URL}brand/samanta-avatar.webp`}
+            alt="Samanta Mondal"
+            style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }}
+          />
         </span>
         <sm.div {...rise(0)}>
-          <h3>You B Tech</h3>
-          <p>
-            @You_B_Tech
+          <h3>Samanta2087</h3>
+          <p className="muted gh-tags">
+            <Icon name="solar:code-bold-duotone" size={13} /> Developer{' '}
+            <Icon name="solar:server-2-bold-duotone" size={13} /> Backend Engineer
           </p>
-          <p className="yt-subs">
-            <Icon name="solar:users-group-rounded-linear" size={14} />
-            <CountUp to={90000} suffix="+" /> subscribers
-          </p>
-          <p className="more">Programming tutorials and tech content.</p>
         </sm.div>
       </div>
 
-      <sm.div className="yt-actions" {...rise(1)}>
-        <a href={links.youtube} className="yt-sub" data-sfx="pop" {...ext}>
-          Subscribe
+      <sm.p className="gh-bio" {...rise(1)}>
+        Building scalable backend systems, APIs, cloud infrastructure, and practical software solutions.
+      </sm.p>
+
+      <sm.a href={links.github} className="gh-follow" data-sfx="pop" {...ext} {...rise(2)}>
+        Follow on GitHub
+      </sm.a>
+
+      <sm.ul className="gh-meta" {...rise(3)}>
+        <li>
+          <Icon name="solar:book-bookmark-bold-duotone" size={16} />
+          <b>
+            <CountUp to={40} suffix="+" />
+          </b>{' '}
+          repositories
+        </li>
+        <li>
+          <Icon name="solar:map-point-bold-duotone" size={16} /> West Bengal, India
+        </li>
+        <li>
+          <Icon name="solar:shield-check-bold-duotone" size={16} /> Python • Go • Docker • FastAPI
+        </li>
+      </sm.ul>
+
+      <sm.div className="gh-list" {...rise(4)}>
+        <a href={links.repos} {...ext}>
+          <Icon name="solar:code-bold-duotone" size={20} />
+          <span>Fyloxen-Backend</span>
+          <span style={{ fontSize: '0.68rem', color: '#00add8', fontWeight: 600 }}>Go</span>
         </a>
-        <a href={links.youtube} className="yt-bell" aria-label="Notifications" {...ext}>
-          <Icon name="solar:bell-linear" size={20} />
+        <a href={links.repos} {...ext}>
+          <Icon name="solar:server-2-bold-duotone" size={20} />
+          <span>VPS-Devops</span>
+          <span style={{ fontSize: '0.68rem', color: '#2496ed', fontWeight: 600 }}>Docker</span>
+        </a>
+        <a href={links.repos} {...ext}>
+          <Icon name="solar:folder-bold-duotone" size={20} />
+          <span>Fyloxen-Download-Backend</span>
+          <span style={{ fontSize: '0.68rem', color: '#3572a5', fontWeight: 600 }}>Python</span>
         </a>
       </sm.div>
 
-      <div className="yt-tabs" role="tablist" aria-label="Channel tabs">
-        {['Home', 'Videos', 'Shorts', 'Playlists', 'About'].map((t, i) => (
-          <span key={t} role="tab" data-sfx="select" aria-selected={tab === i} className={tab === i ? 'on' : ''} onClick={() => setTab(i)}>
-            {t}
-          </span>
-        ))}
-      </div>
-
-      <div className="yt-chips">
-        {ytChips.map((c, i) => (
-          <span key={c} data-sfx="select" aria-pressed={chip === i} className={chip === i ? 'on' : ''} onClick={() => setChip(i)}>
-            {c}
-          </span>
-        ))}
-      </div>
-
-      <sm.a href={links.youtube} className="yt-feature" data-sfx="pop" {...ext} {...rise(2)}>
-        <span className="yt-thumb" aria-hidden="true">
-          <i />
-          <i />
-          <span className="yt-play">
-            <Icon name="solar:play-bold" size={26} />
-          </span>
-        </span>
-        <span className="yt-meta">
-          <b>
-            <CountUp to={7362860} /> total views
-          </b>
-          <small>Watch tutorials on You B Tech</small>
-        </span>
-      </sm.a>
-
-      <nav className="app-nav yt-nav" aria-hidden="true">
+      <nav className="app-nav gh-nav" aria-hidden="true">
         <span className="on">
-          <Icon name="solar:home-2-linear" size={22} />
+          <Icon name="solar:home-2-bold-duotone" size={22} />
           <small>Home</small>
         </span>
         <span>
-          <Icon name="solar:clapperboard-play-linear" size={22} />
-          <small>Shorts</small>
-        </span>
-        <span className="plus">
-          <Icon name="solar:add-circle-linear" size={34} />
+          <Icon name="solar:bell-bold-duotone" size={22} />
+          <small>Inbox</small>
         </span>
         <span>
-          <Icon name="solar:layers-minimalistic-linear" size={22} />
-          <small>Subs</small>
+          <Icon name="solar:compass-big-bold-duotone" size={22} />
+          <small>Explore</small>
         </span>
         <span>
-          <Icon name="solar:user-circle-linear" size={22} />
-          <small>You</small>
+          <Icon name="solar:user-circle-bold-duotone" size={22} />
+          <small>Profile</small>
         </span>
       </nav>
     </article>
@@ -139,63 +135,78 @@ export function YouTubeScreen() {
 
 /* --------------------------------- Instagram --------------------------------- */
 const highlights = [
-  ['solar:smartphone-linear', 'Apps'],
-  ['solar:cpu-bolt-linear', 'AI'],
-  ['logos:flutter-icon', 'Flutter'],
-  ['solar:global-linear', 'Web'],
+  { img: `${import.meta.env.BASE_URL}social/ig-hl1.webp`, label: '🥰🥰🥰' },
+  { img: `${import.meta.env.BASE_URL}social/ig-hl2.webp`, label: 'Achievement' },
+  { icon: 'solar:server-2-bold-duotone', label: 'Backend' },
+  { icon: 'logos:docker-icon', label: 'DevOps' },
 ]
-const grid = [
-  ['solar:code-linear', '#0a84ff'],
-  ['solar:cpu-bolt-linear', '#bf5af2'],
-  ['logos:flutter-icon', '#40c8e0'],
-  ['solar:cart-large-2-linear', '#ff9f0a'],
-  ['solar:smartphone-linear', '#30d158'],
-  ['solar:pallete-2-linear', '#ff375f'],
-  ['solar:global-linear', '#5e5ce6'],
-  ['solar:play-circle-linear', '#ff453a'],
-  ['solar:rocket-2-linear', '#0a84ff'],
+
+const realPosts = [
+  { img: `${import.meta.env.BASE_URL}social/ig-p1.webp`, pinned: true, views: '2,012', label: 'RCB Champions' },
+  { img: `${import.meta.env.BASE_URL}social/ig-p2.webp`, pinned: true, label: 'Gaming Laptop' },
+  { img: `${import.meta.env.BASE_URL}social/ig-p3.webp`, pinned: true, label: 'Samanta Mondal' },
+  { img: `${import.meta.env.BASE_URL}social/ig-p4.webp`, label: 'Nature' },
+  { img: `${import.meta.env.BASE_URL}social/ig-p5.webp`, label: 'Stage Celebration' },
+  { img: `${import.meta.env.BASE_URL}social/ig-p6.webp`, label: 'Night Shot' },
 ]
 
 export function InstagramScreen() {
   const [tab, setTab] = useState(0)
   return (
-    <article className="screen ig" aria-label="Instagram profile: youbtech_code">
+    <article className="screen ig" aria-label="Instagram profile: samanta.18.25">
       <StatusBar />
       <header className="app-bar ig-top">
         <span className="ig-user">
-          <Icon name="solar:lock-linear" size={14} />
-          <b>youbtech_code</b>
+          <b>samanta.18.25</b>
+          <Icon name="solar:alt-arrow-down-linear" size={14} />
         </span>
-        <Icon name="solar:add-circle-linear" size={24} />
+        <Icon name="solar:add-circle-bold-duotone" size={24} />
         <Icon name="solar:hamburger-menu-linear" size={24} />
       </header>
 
       <div className="ig-head">
-        <span className="ig-ring">
-          <span className="ig-avatar">
-            <Logo />
+        <div className="ig-avatar-wrap">
+          <span className="ig-note">Obsessed with...</span>
+          <span className="ig-ring">
+            <span className="ig-avatar">
+              <img
+                src={`${import.meta.env.BASE_URL}social/ig-avatar.webp`}
+                alt="Samanta Mondal"
+                style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }}
+              />
+            </span>
           </span>
-        </span>
+        </div>
         <div className="ig-stats">
           <span>
+            <b>41</b>
+            <small>posts</small>
+          </span>
+          <span>
             <b>
-              <CountUp to={50} suffix="+" />
+              <CountUp to={10.7} decimals={1} suffix="K" />
             </b>
             <small>followers</small>
           </span>
           <span>
-            <b>50+</b>
-            <small>projects</small>
+            <b>10</b>
+            <small>following</small>
           </span>
         </div>
       </div>
 
       <sm.div className="ig-bio" {...rise(0)}>
-        <b>You B Tech</b>
-        <span className="muted">Digital creator</span>
-        <span>Project and development updates.</span>
-        <a href={links.website} className="ig-link" {...ext}>
-          <Icon name="solar:link-round-linear" size={13} /> ybtshop.com
+        <b style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
+          Samanta Mondal
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="#0095f6" aria-label="Verified">
+            <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.8 14.6l-3.8-3.8 1.4-1.4 2.4 2.4 6-6 1.4 1.4-7.4 7.4z" />
+          </svg>
+        </b>
+        <span className="muted" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', fontSize: '0.78rem' }}>
+          ➤ Unstoppable
+        </span>
+        <a href={links.firstPortfolio} className="ig-link" {...ext} style={{ fontSize: '0.76rem' }}>
+          <Icon name="solar:link-round-bold-duotone" size={13} /> samantadev.in and 2 more
         </a>
       </sm.div>
 
@@ -206,24 +217,32 @@ export function InstagramScreen() {
         <a href={links.instagram} className="ig-msg" {...ext}>
           Message
         </a>
-        <span className="ig-add" aria-hidden="true">
-          <Icon name="solar:user-plus-linear" size={18} />
-        </span>
+        <a href={links.facebook} className="ig-add" aria-label="Facebook profile" {...ext}>
+          <Icon name="simple-icons:facebook" size={18} />
+        </a>
       </sm.div>
 
       <div className="ig-hl" aria-hidden="true">
-        {highlights.map(([ic, label]) => (
-          <span key={label}>
+        {highlights.map((h, idx) => (
+          <span key={idx}>
             <i>
-              <Icon name={ic} size={22} />
+              {h.img ? (
+                <img
+                  src={h.img}
+                  alt={h.label}
+                  style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }}
+                />
+              ) : (
+                <Icon name={h.icon} size={22} />
+              )}
             </i>
-            <small>{label}</small>
+            <small>{h.label}</small>
           </span>
         ))}
       </div>
 
       <div className="ig-tabs" role="tablist" aria-label="Profile tabs">
-        {['solar:widget-4-linear', 'solar:clapperboard-play-linear', 'solar:user-circle-linear'].map((ic, i) => (
+        {['solar:widget-4-bold-duotone', 'solar:clapperboard-play-bold-duotone', 'solar:user-circle-bold-duotone'].map((ic, i) => (
           <span key={ic} role="tab" data-sfx="select" aria-selected={tab === i} className={tab === i ? 'on' : ''} onClick={() => setTab(i)}>
             <Icon name={ic} size={22} />
           </span>
@@ -231,158 +250,229 @@ export function InstagramScreen() {
       </div>
 
       <div className="ig-grid" aria-hidden="true">
-        {grid.map(([ic, c], i) => (
-          <sm.i
+        {realPosts.map((post, i) => (
+          <sm.div
             key={i}
-            style={{ '--c': c }}
-            initial={{ opacity: 0, scale: 0.85 }}
+            className="ig-post-tile"
+            initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: false }}
-            transition={{ delay: 0.15 + i * 0.04, type: 'spring', stiffness: 180, damping: 18 }}
+            transition={{ delay: 0.1 + i * 0.04, type: 'spring', stiffness: 180, damping: 18 }}
           >
-            <Icon name={ic} size={26} />
-          </sm.i>
+            <img src={post.img} alt={post.label || `Instagram post ${i + 1}`} loading="lazy" />
+            {post.pinned && <span className="ig-pin">📌</span>}
+            {post.views && (
+              <span className="ig-views">
+                <Icon name="solar:eye-bold" size={11} /> {post.views}
+              </span>
+            )}
+          </sm.div>
         ))}
       </div>
 
       <nav className="app-nav ig-nav" aria-hidden="true">
-        <Icon name="solar:home-2-linear" size={24} />
-        <Icon name="solar:magnifer-linear" size={24} />
-        <Icon name="solar:add-circle-linear" size={24} />
-        <Icon name="solar:clapperboard-play-linear" size={24} />
+        <Icon name="solar:home-2-bold-duotone" size={24} />
+        <Icon name="solar:magnifer-bold-duotone" size={24} />
+        <Icon name="solar:add-circle-bold-duotone" size={24} />
+        <Icon name="solar:clapperboard-play-bold-duotone" size={24} />
         <span className="ig-me">
-          <Logo />
+          <img
+            src={`${import.meta.env.BASE_URL}social/ig-avatar.webp`}
+            alt="Samanta"
+          />
         </span>
       </nav>
     </article>
   )
 }
 
-/* --------------------------------- Telegram --------------------------------- */
-export function TelegramScreen() {
+/* --------------------------------- DevOps & Infrastructure --------------------------------- */
+export function DevOpsScreen() {
   return (
-    <article className="screen tg" aria-label="Telegram channel: You B Tech">
+    <article className="screen" style={{ background: 'var(--s-bg)' }} aria-label="DevOps and Server Status">
       <StatusBar />
-      <header className="tg-top">
-        <Icon name="solar:arrow-left-linear" size={22} />
-        <span className="tg-avatar">
-          <Logo />
+      <header className="app-bar" style={{ borderBottom: '1px solid var(--s-line)' }}>
+        <Icon name="logos:ubuntu" size={20} />
+        <b style={{ fontSize: '0.9rem' }}>vps-production-01</b>
+        <span className="srv-status-tag">
+          <i /> LIVE
         </span>
-        <span className="tg-title">
-          <b>You B Tech</b>
-          <small>
-            <CountUp to={11000} suffix="+" /> subscribers
-          </small>
-        </span>
-        <Icon name="solar:menu-dots-bold" size={22} />
       </header>
 
-      <div className="tg-chat">
-        <span className="tg-date">Today</span>
-
-        <sm.div className="tg-msg" {...rise(0)}>
-          <p>
-            <b>Welcome to You B Tech</b>
-          </p>
-          <p>Tutorials, projects and tech content for developers.</p>
-          <span className="tg-time">
-            <Icon name="solar:eye-linear" size={11} /> 9:41
-          </span>
-        </sm.div>
-
-        <sm.div className="tg-msg" {...rise(1)}>
-          <p>Building apps? Join the coding group and ask anything.</p>
-          <span className="tg-time">
-            <Icon name="solar:eye-linear" size={11} /> 9:42
-          </span>
-        </sm.div>
-        <sm.a href={links.telegramCoding} className="tg-inline" data-sfx="pop" {...ext} {...rise(2)}>
-          <Icon name="simple-icons:telegram" size={14} /> Coding group
-        </sm.a>
+      <div className="srv-head">
+        <div>
+          <h3 style={{ margin: 0, fontSize: '1rem' }}>Infrastructure Monitor</h3>
+          <small className="muted">Ubuntu 24.04 LTS • Docker Host</small>
+        </div>
+        <span style={{ fontSize: '0.74rem', color: '#30d158', fontWeight: 600 }}>99.98% Uptime</span>
       </div>
 
-      <a href={links.telegram} className="tg-join" data-sfx="pop" {...ext}>
-        Join channel
+      <div className="srv-stats-grid">
+        <div className="srv-stat-box">
+          <small>CPU Usage</small>
+          <b style={{ color: '#0a84ff' }}>12.4%</b>
+        </div>
+        <div className="srv-stat-box">
+          <small>Memory (8 GB)</small>
+          <b style={{ color: '#30d158' }}>2.1 GB / 26%</b>
+        </div>
+        <div className="srv-stat-box">
+          <small>Tailscale Mesh</small>
+          <b style={{ color: '#bf5af2' }}>Connected</b>
+        </div>
+        <div className="srv-stat-box">
+          <small>SSL / Let's Encrypt</small>
+          <b style={{ color: '#30d158' }}>Auto-Renewing</b>
+        </div>
+      </div>
+
+      <div style={{ padding: '6px 14px 2px', fontSize: '0.74rem', fontWeight: 600, color: 'var(--s-sub)' }}>
+        ACTIVE CONTAINERS (DOCKER)
+      </div>
+
+      <div className="srv-container-list">
+        <div className="srv-row">
+          <div className="srv-row-left">
+            <Icon name="logos:nginx" size={16} />
+            <span>nginx-reverse-proxy</span>
+          </div>
+          <span className="srv-pill">Port 80/443</span>
+        </div>
+        <div className="srv-row">
+          <div className="srv-row-left">
+            <Icon name="logos:fastapi-icon" size={16} />
+            <span>fastapi-backend</span>
+          </div>
+          <span className="srv-pill">Healthy</span>
+        </div>
+        <div className="srv-row">
+          <div className="srv-row-left">
+            <Icon name="logos:redis" size={16} />
+            <span>redis-cache-queue</span>
+          </div>
+          <span className="srv-pill">Healthy</span>
+        </div>
+        <div className="srv-row">
+          <div className="srv-row-left">
+            <Icon name="logos:postgresql" size={16} />
+            <span>postgres-database</span>
+          </div>
+          <span className="srv-pill">Healthy</span>
+        </div>
+      </div>
+
+      <a
+        href="https://github.com/Samanta2087/VPS-Devops"
+        className="yt-sub"
+        style={{ margin: '10px 14px 6px', height: 34, fontSize: '0.78rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}
+        data-sfx="pop"
+        {...ext}
+      >
+        <Icon name="simple-icons:github" size={15} /> View DevOps Configs
       </a>
-      <i className="home-bar" aria-hidden="true" />
+
+      <nav className="app-nav" style={{ marginTop: 'auto', paddingBottom: 16 }} aria-hidden="true">
+        <span className="on">
+          <Icon name="solar:server-2-bold-duotone" size={20} />
+          <small>Servers</small>
+        </span>
+        <span>
+          <Icon name="logos:docker-icon" size={20} />
+          <small>Containers</small>
+        </span>
+        <span>
+          <Icon name="simple-icons:uptimekuma" size={20} />
+          <small>Monitoring</small>
+        </span>
+        <span>
+          <Icon name="solar:shield-check-bold-duotone" size={20} />
+          <small>Security</small>
+        </span>
+      </nav>
     </article>
   )
 }
 
-/* ---------------------------------- GitHub ---------------------------------- */
-export function GitHubScreen() {
+/* --------------------------------- Fyloxen Product & Platform --------------------------------- */
+export function FyloxenScreen() {
   return (
-    <article className="screen gh" aria-label="GitHub profile: YouBTech01">
+    <article className="screen" style={{ background: 'var(--s-bg)' }} aria-label="Fyloxen File Manager">
       <StatusBar />
-      <header className="app-bar gh-top">
-        <Icon name="solar:hamburger-menu-linear" size={22} />
-        <Icon name="simple-icons:github" size={26} />
-        <Icon name="solar:bell-linear" size={22} />
+      <header className="app-bar" style={{ borderBottom: '1px solid var(--s-line)' }}>
+        <Icon name="logos:go" size={22} />
+        <b style={{ fontSize: '0.9rem' }}>Fyloxen Platform</b>
+        <Icon name="simple-icons:cloudflare" size={20} />
       </header>
 
-      <div className="gh-id">
-        <span className="gh-avatar">
-          <Logo />
+      <div style={{ padding: '12px 16px 8px' }}>
+        <span style={{ fontSize: '0.68rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--accent)', fontWeight: 700 }}>
+          High Performance Engine
         </span>
-        <sm.div {...rise(0)}>
-          <h3>YouBTech01</h3>
-          <p className="muted gh-tags"><Icon name="solar:code-linear" size={13} /> Developer <Icon name="solar:play-circle-linear" size={13} /> YouTuber</p>
-        </sm.div>
+        <h3 style={{ margin: '2px 0 4px', fontSize: '1.05rem' }}>Lightweight File Manager</h3>
+        <p className="muted" style={{ fontSize: '0.76rem' }}>
+          Startup optimization, privacy-conscious file processing, and streaming backend conversion.
+        </p>
       </div>
 
-      <sm.p className="gh-bio" {...rise(1)}>
-        Developer, YouTuber and app builder. More projects and open contributions.
-      </sm.p>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 8, padding: '4px 14px' }}>
+        <div className="srv-stat-box">
+          <Icon name="solar:rocket-2-bold-duotone" size={16} />
+          <b style={{ marginTop: 4 }}>Fast Startup</b>
+          <small>Optimized runtime</small>
+        </div>
+        <div className="srv-stat-box">
+          <Icon name="solar:shield-check-bold-duotone" size={16} />
+          <b style={{ marginTop: 4 }}>Privacy First</b>
+          <small>No telemetry tracking</small>
+        </div>
+        <div className="srv-stat-box">
+          <Icon name="simple-icons:cloudflare" size={16} />
+          <b style={{ marginTop: 4 }}>Cloudflare R2</b>
+          <small>S3 Object Storage</small>
+        </div>
+        <div className="srv-stat-box">
+          <Icon name="logos:redis" size={16} />
+          <b style={{ marginTop: 4 }}>Redis Queues</b>
+          <small>Asynchronous jobs</small>
+        </div>
+      </div>
 
-      <sm.a href={links.github} className="gh-follow" data-sfx="pop" {...ext} {...rise(2)}>
-        Follow
-      </sm.a>
+      <div style={{ margin: '10px 14px 4px', padding: 10, borderRadius: 12, background: 'var(--s-chip)', border: '1px solid var(--s-line)' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 4 }}>
+          <b style={{ fontSize: '0.76rem' }}>Conversion Pipeline</b>
+          <span style={{ fontSize: '0.66rem', color: '#30d158', fontWeight: 600 }}>Ready</span>
+        </div>
+        <div style={{ fontSize: '0.72rem', color: 'var(--s-sub)' }}>
+          FFmpeg audio extraction • Video transcode • Image format optimization • PDF utilities
+        </div>
+      </div>
 
-      <sm.ul className="gh-meta" {...rise(3)}>
-        <li>
-          <Icon name="solar:users-group-two-rounded-linear" size={16} />
-          <b>
-            <CountUp to={550} suffix="+" />
-          </b>{' '}
-          followers
-        </li>
-        <li>
-          <Icon name="solar:map-point-linear" size={16} /> Madhya Pradesh, India
-        </li>
-        <li>
-          <Icon name="solar:link-round-linear" size={16} /> ybtshop.com
-        </li>
-      </sm.ul>
+      <a
+        href="https://github.com/Samanta2087/Fyloxen-Backend"
+        className="yt-sub"
+        style={{ margin: '8px 14px 6px', height: 34, fontSize: '0.78rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}
+        data-sfx="pop"
+        {...ext}
+      >
+        <Icon name="simple-icons:github" size={15} /> Explore Fyloxen on GitHub
+      </a>
 
-      <sm.div className="gh-list" {...rise(4)}>
-        <a href={links.repos} {...ext}>
-          <Icon name="solar:book-bookmark-linear" size={20} />
-          <span>Repositories</span>
-          <Icon name="solar:alt-arrow-right-linear" size={16} />
-        </a>
-        <a href={links.github} {...ext}>
-          <Icon name="solar:user-circle-linear" size={20} />
-          <span>Profile</span>
-          <Icon name="solar:alt-arrow-right-linear" size={16} />
-        </a>
-      </sm.div>
-
-      <nav className="app-nav gh-nav" aria-hidden="true">
+      <nav className="app-nav" style={{ marginTop: 'auto', paddingBottom: 16 }} aria-hidden="true">
         <span className="on">
-          <Icon name="solar:home-2-linear" size={22} />
-          <small>Home</small>
+          <Icon name="solar:folder-bold-duotone" size={20} />
+          <small>Files</small>
         </span>
         <span>
-          <Icon name="solar:bell-linear" size={22} />
-          <small>Inbox</small>
+          <Icon name="solar:refresh-circle-bold-duotone" size={20} />
+          <small>Convert</small>
         </span>
         <span>
-          <Icon name="solar:compass-big-linear" size={22} />
-          <small>Explore</small>
+          <Icon name="solar:cloud-bold-duotone" size={20} />
+          <small>Storage</small>
         </span>
         <span>
-          <Icon name="solar:user-circle-linear" size={22} />
-          <small>Profile</small>
+          <Icon name="solar:widget-5-bold-duotone" size={20} />
+          <small>Queues</small>
         </span>
       </nav>
     </article>

@@ -12,8 +12,13 @@ import { play } from '../sfx.js'
 // top corners, drag down to dismiss) with the app icons and a one-line note for each skill.
 export function Folders() {
   const [open, setOpen] = useState(null)
+  const [mounted, setMounted] = useState(false)
   const folder = skills.find((s) => s.title === open)
   const drag = useDragControls()
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const close = () => {
     setOpen(null)
@@ -73,7 +78,7 @@ export function Folders() {
           transition={{ type: 'spring', stiffness: 110, damping: 20 }}
         >
           <span className="widget-label">
-            <Icon name="solar:chart-2-linear" size={14} /> Skill levels
+            <Icon name="solar:chart-2-bold-duotone" size={14} /> Core Technical Stack
           </span>
           <ul>
             {levels.map((l, i) => (
@@ -100,9 +105,10 @@ export function Folders() {
         </sm.div>
       </div>
 
-      {createPortal(
-        <AnimatePresence>
-          {folder && (
+      {mounted &&
+        createPortal(
+          <AnimatePresence>
+            {folder && (
             <sm.div
               className="sheet-backdrop"
               data-lenis-prevent

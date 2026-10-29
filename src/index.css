@@ -61,3 +61,95 @@ html,
 body {
   overflow-x: clip;
 }
+
+/* =========================================================
+   PERFORMANCE: GPU compositing + layout containment
+   These rules never change component markup or behaviour —
+   they only tell the browser HOW to composite the layers.
+   ========================================================= */
+
+/* Promote animated/transformed elements to their own GPU layer up-front.
+   This avoids a mid-animation promotion which causes a jank spike. */
+.app-icon,
+.round-btn,
+.card,
+.island-grid .tile,
+.reel-tile,
+.orbit-chip,
+.notif {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Restore will-change when animations are globally disabled */
+@media (prefers-reduced-motion: reduce) {
+  .app-icon,
+  .round-btn,
+  .card,
+  .island-grid .tile,
+  .reel-tile,
+  .orbit-chip,
+  .notif {
+    will-change: auto;
+    transform: none;
+  }
+}
+
+/* Layout containment: isolate sections so layout changes don't cascade outside */
+.section,
+.widget,
+.card,
+.phone-wrap,
+.lock-wrap {
+  contain: layout style paint;
+}
+
+/* Mobile: drop backdrop-filter on narrow touch screens (expensive GPU op).
+   Keeps the glass look via denser fill colours. */
+@media (max-width: 600px) and (hover: none) {
+  .fnav,
+  .card,
+  .btn-ghost,
+  .footer,
+  .theme-btn,
+  .reel-orb,
+  .badges li,
+  .tags li {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .fnav,
+  .footer,
+  .theme-btn {
+    background: rgba(240, 247, 255, 0.92);
+  }
+  [data-theme='dark'] .fnav,
+  [data-theme='dark'] .footer,
+  [data-theme='dark'] .theme-btn {
+    background: rgba(8, 18, 32, 0.92);
+  }
+
+  /* Single-layer shadow instead of multi-layer */
+  .card {
+    box-shadow: 0 4px 16px -4px rgba(0, 0, 0, 0.18);
+  }
+  [data-theme='dark'] .card {
+    box-shadow: 0 4px 16px -4px rgba(0, 0, 0, 0.55);
+  }
+}
+
+/* Faster text rasterisation on mobile GPU */
+body {
+  text-rendering: optimizeSpeed;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Off-screen media: defer decode until near the viewport */
+img,
+video,
+canvas {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 200px;
+}
+

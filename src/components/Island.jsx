@@ -143,7 +143,7 @@ export function Island() {
                 onClick={toggle}
               >
                 <span>
-                  <Icon name={theme === 'dark' ? 'solar:moon-linear' : 'solar:sun-2-linear'} size={18} />
+                  <Icon name={theme === 'dark' ? 'solar:moon-bold-duotone' : 'solar:sun-2-bold-duotone'} size={18} />
                   {theme === 'dark' ? 'Dark' : 'Light'} appearance
                 </span>
                 <i className="switch" data-on={theme === 'dark'}>
@@ -158,7 +158,7 @@ export function Island() {
                 onClick={sfxStore.toggle}
               >
                 <span>
-                  <Icon name={sound ? 'solar:volume-loud-linear' : 'solar:volume-cross-linear'} size={18} />
+                  <Icon name={sound ? 'solar:volume-loud-bold-duotone' : 'solar:volume-cross-bold-duotone'} size={18} />
                   Sounds
                 </span>
                 <i className="switch" data-on={sound}>

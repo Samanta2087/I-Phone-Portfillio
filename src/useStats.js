@@ -94,4 +94,4 @@ const subscribe = (fn) => {
   listeners.add(fn)
   return () => listeners.delete(fn)
 }
-export const useStats = () => useSyncExternalStore(subscribe, () => state)
+export const useStats = () => useSyncExternalStore(subscribe, () => state, () => state)

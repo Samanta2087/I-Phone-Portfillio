@@ -1,14 +1,13 @@
-
 import { sm } from '../sm.jsx'
 import map from '../map-data.json'
 import { Icon } from './Icon.jsx'
 import { links } from '../data.js'
 
 const { width: W, height: H, pin, states } = map
-const neighbours = ['Rajasthan', 'Uttar Pradesh', 'Maharashtra', 'Gujarat', 'Chhattisgarh']
-const mp = states.find((s) => s.mp)
+const neighbours = ['Bihar', 'Jharkhand', 'Orissa', 'Assam', 'Sikkim']
+const wb = states.find((s) => s.wb || s.name === 'West Bengal')
 
-// An Apple Maps style card: the camera flies in on Madhya Pradesh, its outline traces itself,
+// An Apple Maps style card: the camera flies in on West Bengal, its outline traces itself,
 // and a pin drops with a ripple. Shapes come from real state boundaries (scripts/build-map.mjs).
 export function MapWidget() {
   return (
@@ -21,14 +20,14 @@ export function MapWidget() {
         viewport={{ once: false, amount: 'some' }}
         transition={{ duration: 2.4, ease: [0.22, 1, 0.36, 1] }}
       >
-        <svg viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMid slice" role="img" aria-label="Map of Madhya Pradesh, India">
+        <svg viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMid slice" role="img" aria-label="Map of West Bengal, India">
           <rect width={W} height={H} className="m-sea" />
-          {states.filter((s) => !s.mp).map((s) => (
+          {states.filter((s) => s !== wb).map((s) => (
             <path key={s.name} d={s.d} className="m-land" />
           ))}
 
           <sm.path
-            d={mp.d}
+            d={wb.d}
             className="m-mp-fill"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -36,7 +35,7 @@ export function MapWidget() {
             transition={{ delay: 1.2, duration: 1 }}
           />
           <sm.path
-            d={mp.d}
+            d={wb.d}
             className="m-mp-line"
             initial={{ pathLength: 0 }}
             whileInView={{ pathLength: 1 }}
@@ -52,7 +51,7 @@ export function MapWidget() {
               </text>
             ))}
           <text x={pin[0]} y={pin[1] + 54} className="m-label m-label-main" textAnchor="middle">
-            Madhya Pradesh
+            West Bengal
           </text>
 
           <g transform={`translate(${pin[0]} ${pin[1]})`}>
@@ -83,7 +82,7 @@ export function MapWidget() {
       </sm.div>
 
       <span className="map-label">
-        <Icon name="solar:map-point-linear" size={14} /> Maps
+        <Icon name="solar:map-point-bold-duotone" size={14} /> Maps
       </span>
       <sm.span
         className="compass"
@@ -103,7 +102,7 @@ export function MapWidget() {
         transition={{ type: 'spring', stiffness: 200, damping: 20, delay: 2.4 }}
       >
         <span>
-          <b>Madhya Pradesh</b>
+          <b>West Bengal</b>
           <small>India</small>
         </span>
         <a href={links.maps} className="directions" target="_blank" rel="noopener noreferrer">

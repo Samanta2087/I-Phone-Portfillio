@@ -414,18 +414,65 @@ body {
   --sheet: rgba(20, 30, 46, 0.82);
 }
 [data-theme='dark'] .mini {
-  background: rgba(255, 255, 255, 0.12);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.05) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.25), 0 4px 10px -2px rgba(0, 0, 0, 0.45);
 }
 [data-theme='dark'] .notif,
 [data-theme='dark'] .ring-widget,
-[data-theme='dark'] .round-btn,
 [data-theme='dark'] .place-card {
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), var(--glass-shadow);
 }
+[data-theme='dark'] .round-btn {
+  background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.04) 60%, rgba(0, 0, 0, 0.35) 100%), rgba(20, 30, 48, 0.85);
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: inset 0 1.5px 1px rgba(255, 255, 255, 0.35), inset 0 -1.5px 1px rgba(0, 0, 0, 0.5), 0 10px 24px -4px rgba(0, 0, 0, 0.6);
+}
 [data-theme='dark'] .sheet-app .app-tile {
-  background: rgba(255, 255, 255, 0.92);
+  background: linear-gradient(145deg, rgba(38, 48, 68, 0.95) 0%, rgba(16, 22, 34, 0.98) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: inset 0 1.5px 1px rgba(255, 255, 255, 0.32), inset 0 -1.5px 1px rgba(0, 0, 0, 0.5), 0 12px 28px -6px rgba(0, 0, 0, 0.65);
+}
+[data-theme='dark'] .sheet-app:hover .app-tile {
+  background: linear-gradient(145deg, rgba(48, 60, 84, 0.95) 0%, rgba(20, 28, 42, 0.98) 100%);
+  border-color: rgba(255, 255, 255, 0.32);
+  box-shadow: inset 0 1.5px 1px rgba(255, 255, 255, 0.5), 0 18px 36px -6px rgba(10, 132, 255, 0.4), 0 6px 16px -2px rgba(0, 0, 0, 0.7);
 }
 [data-theme='dark'] .app-icon.wave {
   background: rgba(255, 255, 255, 0.18);
+}
+
+/* =========================================================
+   PERFORMANCE: Mobile paint-cost reducers
+   On narrow touch-only viewports (phones), the specular
+   ::before pseudo-element and the pointer-radial ::after
+   are the #1 GPU paint hotspot.  We null them out safely.
+   ========================================================= */
+@media (max-width: 600px) and (hover: none) {
+  /* Remove the gradient-border specular rim — saves a mask paint per tile */
+  .fnav::before,
+  .card::before,
+  .btn::before,
+  .footer::before,
+  .theme-btn::before,
+  .reel-orb::before {
+    display: none;
+  }
+
+  /* Remove the pointer-following radial highlight — only meaningful on desktop */
+  .fnav::after,
+  .card::after,
+  .btn::after {
+    display: none;
+  }
+
+  /* Simplify card hover (no transform translate on mobile to avoid stutter) */
+  .card:hover {
+    transform: none;
+  }
+
+  /* Reduce Lenis smooth-scroll momentum cost on low-end hardware */
+  html {
+    scroll-behavior: auto;
+  }
 }

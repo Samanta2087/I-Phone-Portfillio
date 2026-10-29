@@ -57,26 +57,34 @@ const rise = (i = 0) => ({
   transition: { type: 'spring', stiffness: 110, damping: 20, mass: 0.9, delay: i * 0.07 },
 })
 
-// Profile card: the emoji character on the left; name, age and a short description on the right.
+// Profile card: the emoji character on the left; name and short bio on the right.
 function ProfileWidget() {
   return (
     <sm.div className="card widget profile-widget" {...rise(0)}>
-      <sm.span
-        className="memoji"
-        animate={{ y: [0, -7, 0], rotate: [-3, 3, -3] }}
-        transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+      <sm.div
+        className="profile-avatar-wrap"
+        animate={{ y: [0, -6, 0] }}
+        transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
       >
-        <DevEmoji size={84} />
-      </sm.span>
+        <img
+          src={`${import.meta.env.BASE_URL}brand/samanta-avatar.webp`}
+          alt="Samanta Mondal"
+          className="profile-avatar-img"
+          width="88"
+          height="88"
+          loading="eager"
+        />
+        <span className="profile-badge-dot" title="Available for work" />
+      </sm.div>
       <div className="profile-text">
         <div className="profile-head">
-          <h3 className="profile-name">Brajendra</h3>
-          <span className="profile-age">19+ years</span>
+          <h3 className="profile-name">Samanta Mondal</h3>
+          <span className="profile-age">Backend Engineer</span>
         </div>
         <StaggerFadeUp
           className="profile-bio"
-          text="Art, computer science and tech student. Creativity meets code, apps and YouTube."
-          mark="Creativity meets code"
+          text="Technology enthusiast and developer building practical software solutions, scalable backend systems, and modern web applications."
+          mark="scalable backend systems"
           delay={0.2}
         />
       </div>
@@ -84,19 +92,18 @@ function ProfileWidget() {
   )
 }
 
-// Stocks-style widget; the curve is decorative, only the headline figure is a claim.
+// System Status widget: server uptime and health monitoring
 function ViewsWidget() {
-  const line = 'M0 97 C 28 96, 46 82, 78 80 S 120 56, 152 50 S 190 24, 206 12'
+  const line = 'M0 80 C 35 78, 60 45, 95 42 S 145 28, 175 22 S 198 14, 206 10'
   return (
     <sm.div className="card widget views-widget" {...rise(2)}>
       <span className="widget-label">
-        <Icon name="simple-icons:youtube" size={13} /> You B Tech
+        <Icon name="simple-icons:uptimekuma" size={13} /> Service Health
       </span>
       <strong className="big-number">
-        <CountUp to={7362860} />
+        99.9%
       </strong>
-      <small className="up-tag">views</small>
-      {/* the wrapper is what scroll-detection watches: the clipped graph itself has no visible area */}
+      <small className="up-tag">operational</small>
       <sm.div className="spark" aria-hidden="true" initial="hidden" whileInView="show" viewport={{ once: false, amount: 0.5 }}>
         <sm.svg
           viewBox="0 0 214 100"
@@ -125,7 +132,7 @@ function HobbiesWidget() {
   return (
     <sm.div className="card widget interests-widget" {...rise(3)}>
       <span className="widget-label">
-        <Icon name="solar:gamepad-linear" size={14} /> Off duty
+        <Icon name="solar:server-2-bold-duotone" size={14} /> Core Interests
       </span>
       <div className="app-grid">
         {hobbies.map((it, i) => (
@@ -148,12 +155,12 @@ function HobbiesWidget() {
   )
 }
 
-// iOS Reminders: the circles tick off one by one.
+// iOS Reminders: Key Highlights
 function RemindersWidget() {
   return (
     <sm.div className="card widget reminders-widget" {...rise(4)}>
       <span className="widget-label">
-        <Icon name="solar:check-circle-bold" size={14} /> Achievements
+        <Icon name="solar:check-circle-bold-duotone" size={14} /> Key Highlights
         <em>{reminders.length}</em>
       </span>
       <ul>
