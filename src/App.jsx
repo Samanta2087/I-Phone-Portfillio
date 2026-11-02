@@ -1,4 +1,5 @@
 import { MotionConfig } from 'motion/react'
+import { Analytics } from '@vercel/analytics/react'
 import { Boot } from './components/Boot.jsx'
 import { Island } from './components/Island.jsx'
 import { LockScreen } from './components/LockScreen.jsx'
@@ -48,6 +49,7 @@ export default function App() {
         <Messages />
       </main>
       <Footer />
+      <Analytics />
     </MotionConfig>
   )
 }
