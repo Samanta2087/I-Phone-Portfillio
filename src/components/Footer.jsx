@@ -134,7 +134,7 @@ export function Footer() {
         <div className="foot-stats" role="group" aria-label="Site statistics">
           <span className="stat" title="Website views">
             <Icon name="solar:eye-bold-duotone" size={18} />
-            <b>{stats.views.toLocaleString('en-US')}</b>
+            <b>{stats.ready ? stats.views.toLocaleString('en-US') : '—'}</b>
             <small>{stats.views === 1 ? 'view' : 'views'}</small>
           </span>
           <button
@@ -147,7 +147,7 @@ export function Footer() {
             <motion.span key={String(stats.liked)} initial={{ scale: 0.4 }} animate={{ scale: 1 }} transition={{ type: 'spring', stiffness: 500, damping: 12 }}>
               <Icon name={stats.liked ? 'solar:heart-bold' : 'solar:heart-bold-duotone'} size={18} />
             </motion.span>
-            <b>{stats.likes.toLocaleString('en-US')}</b>
+            <b>{stats.ready ? stats.likes.toLocaleString('en-US') : '—'}</b>
             <small>{stats.likes === 1 ? 'like' : 'likes'}</small>
           </button>
         </div>
