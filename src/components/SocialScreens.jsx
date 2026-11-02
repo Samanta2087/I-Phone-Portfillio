@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { sm } from '../sm.jsx'
 import { Icon } from './Icon.jsx'
@@ -179,29 +179,16 @@ export function InstagramScreen() {
         </div>
         <div className="ig-stats">
           <span>
-            <b>41</b>
-            <small>posts</small>
-          </span>
-          <span>
             <b>
-              <CountUp to={10.7} decimals={1} suffix="K" />
+              <Icon name="simple-icons:instagram" size={16} />
             </b>
-            <small>followers</small>
-          </span>
-          <span>
-            <b>10</b>
-            <small>following</small>
+            <small>personal profile</small>
           </span>
         </div>
       </div>
 
       <sm.div className="ig-bio" {...rise(0)}>
-        <b style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
-          Samanta Mondal
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="#0095f6" aria-label="Verified">
-            <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.8 14.6l-3.8-3.8 1.4-1.4 2.4 2.4 6-6 1.4 1.4-7.4 7.4z" />
-          </svg>
-        </b>
+        <b style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}>Samanta Mondal</b>
         <span className="muted" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', fontSize: '0.78rem' }}>
           ➤ Unstoppable
         </span>
@@ -288,105 +275,127 @@ export function InstagramScreen() {
 
 /* --------------------------------- DevOps & Infrastructure --------------------------------- */
 export function DevOpsScreen() {
+  const [gh, setGh] = useState(null)
+  useEffect(() => {
+    let alive = true
+    const base = 'https://api.github.com/users/Samanta2087'
+    Promise.all([
+      fetch(base).then((r) => (r.ok ? r.json() : null)),
+      fetch(`${base}/repos?per_page=100&sort=pushed`).then((r) => (r.ok ? r.json() : [])),
+    ])
+      .then(([user, repos]) => {
+        if (!alive) return
+        setGh({ user, repos: Array.isArray(repos) ? repos.slice(0, 4) : [] })
+      })
+      .catch(() => {})
+    return () => {
+      alive = false
+    }
+  }, [])
+
+  const live = Boolean(gh && gh.user)
+  const num = (n) => (typeof n === 'number' ? n.toLocaleString('en-US') : '—')
+  const when = (iso) => {
+    if (!iso) return '—'
+    const mins = Math.max(0, Math.round((Date.now() - new Date(iso).getTime()) / 60000))
+    if (mins < 60) return `${mins}m ago`
+    const hours = Math.round(mins / 60)
+    if (hours < 24) return `${hours}h ago`
+    return `${Math.round(hours / 24)}d ago`
+  }
+
   return (
-    <article className="screen" style={{ background: 'var(--s-bg)' }} aria-label="DevOps and Server Status">
+    <article className="screen" style={{ background: 'var(--s-bg)' }} aria-label="GitHub activity and public projects">
       <StatusBar />
       <header className="app-bar" style={{ borderBottom: '1px solid var(--s-line)' }}>
-        <Icon name="logos:ubuntu" size={20} />
-        <b style={{ fontSize: '0.9rem' }}>vps-production-01</b>
+        <Icon name="simple-icons:github" size={20} />
+        <b style={{ fontSize: '0.9rem' }}>github.com/Samanta2087</b>
         <span className="srv-status-tag">
-          <i /> LIVE
+          <i /> {live ? 'LIVE' : 'SYNC'}
         </span>
       </header>
 
       <div className="srv-head">
         <div>
-          <h3 style={{ margin: 0, fontSize: '1rem' }}>Infrastructure Monitor</h3>
-          <small className="muted">Ubuntu 24.04 LTS • Docker Host</small>
+          <h3 style={{ margin: 0, fontSize: '1rem' }}>GitHub Activity</h3>
+          <small className="muted">Fetched live from the public GitHub API</small>
         </div>
-        <span style={{ fontSize: '0.74rem', color: '#30d158', fontWeight: 600 }}>99.98% Uptime</span>
+        <span style={{ fontSize: '0.74rem', color: 'var(--s-sub)', fontWeight: 600 }}>
+          {live ? `updated ${when(gh.user.updated_at)}` : 'loading…'}
+        </span>
       </div>
 
       <div className="srv-stats-grid">
         <div className="srv-stat-box">
-          <small>CPU Usage</small>
-          <b style={{ color: '#0a84ff' }}>12.4%</b>
+          <small>Public Repos</small>
+          <b style={{ color: '#0a84ff' }}>{live ? num(gh.user.public_repos) : '—'}</b>
         </div>
         <div className="srv-stat-box">
-          <small>Memory (8 GB)</small>
-          <b style={{ color: '#30d158' }}>2.1 GB / 26%</b>
+          <small>Followers</small>
+          <b style={{ color: '#30d158' }}>{live ? num(gh.user.followers) : '—'}</b>
         </div>
         <div className="srv-stat-box">
-          <small>Tailscale Mesh</small>
-          <b style={{ color: '#bf5af2' }}>Connected</b>
+          <small>Following</small>
+          <b style={{ color: '#bf5af2' }}>{live ? num(gh.user.following) : '—'}</b>
         </div>
         <div className="srv-stat-box">
-          <small>SSL / Let's Encrypt</small>
-          <b style={{ color: '#30d158' }}>Auto-Renewing</b>
+          <small>Last Update</small>
+          <b style={{ color: '#ff9f0a' }}>{live ? when(gh.user.updated_at) : '—'}</b>
         </div>
       </div>
 
       <div style={{ padding: '6px 14px 2px', fontSize: '0.74rem', fontWeight: 600, color: 'var(--s-sub)' }}>
-        ACTIVE CONTAINERS (DOCKER)
+        RECENT REPOSITORIES
       </div>
 
       <div className="srv-container-list">
-        <div className="srv-row">
-          <div className="srv-row-left">
-            <Icon name="logos:nginx" size={16} />
-            <span>nginx-reverse-proxy</span>
+        {gh && gh.repos.length > 0 ? (
+          gh.repos.map((repo) => (
+            <div className="srv-row" key={repo.id}>
+              <div className="srv-row-left">
+                <Icon name="solar:folder-with-files-bold-duotone" size={16} />
+                <span>{repo.name}</span>
+              </div>
+              <span className="srv-pill">{repo.language || (repo.private ? 'Private' : 'Public')}</span>
+            </div>
+          ))
+        ) : (
+          <div className="srv-row">
+            <div className="srv-row-left">
+              <Icon name="solar:refresh-circle-bold-duotone" size={16} />
+              <span>{live ? 'No public repositories' : 'Loading repositories…'}</span>
+            </div>
+            <span className="srv-pill">—</span>
           </div>
-          <span className="srv-pill">Port 80/443</span>
-        </div>
-        <div className="srv-row">
-          <div className="srv-row-left">
-            <Icon name="logos:fastapi-icon" size={16} />
-            <span>fastapi-backend</span>
-          </div>
-          <span className="srv-pill">Healthy</span>
-        </div>
-        <div className="srv-row">
-          <div className="srv-row-left">
-            <Icon name="logos:redis" size={16} />
-            <span>redis-cache-queue</span>
-          </div>
-          <span className="srv-pill">Healthy</span>
-        </div>
-        <div className="srv-row">
-          <div className="srv-row-left">
-            <Icon name="logos:postgresql" size={16} />
-            <span>postgres-database</span>
-          </div>
-          <span className="srv-pill">Healthy</span>
-        </div>
+        )}
       </div>
 
       <a
-        href="https://github.com/Samanta2087/VPS-Devops"
+        href="https://github.com/Samanta2087?tab=repositories"
         className="yt-sub"
         style={{ margin: '10px 14px 6px', height: 34, fontSize: '0.78rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}
         data-sfx="pop"
         {...ext}
       >
-        <Icon name="simple-icons:github" size={15} /> View DevOps Configs
+        <Icon name="simple-icons:github" size={15} /> View GitHub Profile
       </a>
 
       <nav className="app-nav" style={{ marginTop: 'auto', paddingBottom: 16 }} aria-hidden="true">
         <span className="on">
-          <Icon name="solar:server-2-bold-duotone" size={20} />
-          <small>Servers</small>
+          <Icon name="solar:code-square-bold-duotone" size={20} />
+          <small>Repos</small>
         </span>
         <span>
-          <Icon name="logos:docker-icon" size={20} />
-          <small>Containers</small>
+          <Icon name="solar:git-commit-bold-duotone" size={20} />
+          <small>Commits</small>
         </span>
         <span>
-          <Icon name="simple-icons:uptimekuma" size={20} />
-          <small>Monitoring</small>
+          <Icon name="simple-icons:github" size={20} />
+          <small>GitHub</small>
         </span>
         <span>
           <Icon name="solar:shield-check-bold-duotone" size={20} />
-          <small>Security</small>
+          <small>Public</small>
         </span>
       </nav>
     </article>

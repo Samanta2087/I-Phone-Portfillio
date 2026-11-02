@@ -6,7 +6,7 @@ import { useSyncExternalStore } from 'react'
 // Counts are cached in localStorage, so the footer never shows empty, even if the API is slow.
 const API =
   typeof window !== 'undefined' && window.location.hostname.includes('github.io')
-    ? 'https://you-b-tech-portfolio-eaefa6f2.netlify.app/api/stats'
+    ? '/api/stats'
     : '/api/stats'
 const CACHE = 'stats-cache'
 const LIKED = 'stats-liked'
